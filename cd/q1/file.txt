@@ -1,0 +1,8 @@
+#include<assd>
+int s[35]="asfaFSD"
+void main(){
+int a;
+char c[10]="msrit",f[]="lk";
+strlen("sdfsdf);
+
+}
