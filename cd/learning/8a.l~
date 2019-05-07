@@ -1,0 +1,23 @@
+%{
+#include "y.tab.h"
+#include<stdio.h>
+#include<ctype.h>
+#include<stdlib.h>
+
+extern int yylval;
+int val;
+%}
+
+%%
+
+[0-9]+ {yylval = atoi(yytext); return num;}
+[a-zA-Z][a-zA-Z0-9]* {printf("enter the value of expression %s ",yytext);scanf("%d",&yylval);return id;}
+[\t] ;
+[\n] ;
+. {return yytext[0];}
+
+%%
+
+yywrap(){
+return 1;
+}
