@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<fcntl.h>
+#include<stdlib.h>
+
+int main(int argc,char *argv[]){
+int source,dest,filesize;
+char buf,rd;
+int i,j;
+
+if(argc<3){
+fprintf(stderr,"cant find the name");
+}
+
+if(source=open(argv[1],O_RDONLY)<0){
+fprintf(stderr,"cant access the source file");
+
+}
+
+if(dest=open(argv[2],O_WRONLY|O_CREAT|O_TRUNC)<0){
+fprintf(stderr,"cant access the destination file");
+}
+
+filesize=lseek(source,(off_t)0,SEEK_END)
+printf("source file size is %d",filesize);
+
+for(i=filesize-1;i>=0;--i){
+	lseek(source,(off_t)i,SEEK_SET);
+	if(rd=read(source,&buf,1)!=1){
+	fprintf(stderr,"file read failed");
+	}
+	if(wr=write(dest,&buf,1)!=1){
+	fprintf(stderr,"file read failed");
+	}
+
+}
+}
